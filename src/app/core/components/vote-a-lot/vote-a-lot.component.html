@@ -5,13 +5,14 @@
 </div>
 <div class="row padding-component">
     <div class="col-4 border">
-        <app-create-poll #createPoll></app-create-poll>
+        <app-create-poll #createPoll (resetAllEvent)="resetAllChange($event)"></app-create-poll>
     </div>
-    <div class="col-4 border" *ngIf="createPollForm != undefined && createPollForm?.valid">
+    <div class="col-4 border" [hidden]="createPollForm == undefined || createPollForm?.invalid">
         <app-vote-poll #votePoll [createPollForm]="createPollForm" (answersVotedEvent)="answersVotedChange($event)">
         </app-vote-poll>
     </div>
-    <div class="col-4 border" *ngIf="createPollForm != undefined && createPollForm?.valid && answersVoted">
+    <div class="col-4 border"
+        [hidden]="createPollForm == undefined || createPollForm?.invalid || answersVoted?.length ==0">
         <app-chart-poll #chartPoll [answersVoted]="answersVoted"></app-chart-poll>
     </div>
 </div>

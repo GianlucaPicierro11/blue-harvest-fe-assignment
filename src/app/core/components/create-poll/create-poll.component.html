@@ -25,7 +25,8 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button mat-raised-button color="primary" type="button" (click)="addItem()">
+                        <button mat-raised-button [disabled]="this.getAnswers().length >= this.maxNumAnswers"
+                            (click)="addItem()">
                             Add
                         </button>
                     </div>
@@ -35,7 +36,7 @@
                         {{getAnswers().length}}/{{maxNumAnswers}} possible answers
                     </div>
                     <div class="col">
-                        <button mat-raised-button color="primary" type="button" (click)="resetAll()">
+                        <button mat-raised-button (click)="resetAll()">
                             Reset
                         </button>
                     </div>

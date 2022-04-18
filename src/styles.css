@@ -18,6 +18,10 @@ body {
     max-width: 100%;
 }
 
+.full-width {
+    width: 100%;
+}
+
 .padding-component {
     padding: 20px;
 }

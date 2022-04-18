@@ -12,7 +12,6 @@ import { ChartPollComponent } from '../chart-poll/chart-poll.component';
 export class VoteALotComponent implements OnInit {
 
   @ViewChild("createPoll", { static: true }) createPollComponent: CreatePollComponent | undefined;
-
   @ViewChild("chartPoll", { static: false }) chartPollComponent: ChartPollComponent | undefined;
 
   createPollForm: FormGroup | undefined;
@@ -30,5 +29,10 @@ export class VoteALotComponent implements OnInit {
     this.chartPollComponent?.setAnswersVoted(answersVoted);
   }
 
+  resetAllChange(resetAll: boolean) {
+    if (resetAll) {
+      this.answersVoted = [];
+    }
+  }
 
 }

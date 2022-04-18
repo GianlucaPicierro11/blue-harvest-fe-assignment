@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,7 @@ export class CreatePollComponent {
 
   createPollForm: FormGroup;
   maxNumAnswers: number = 10;
+  @Output() resetAllEvent = new EventEmitter<boolean>();
 
   constructor(private fb: FormBuilder) {
     this.createPollForm = this.fb.group({
@@ -35,12 +36,13 @@ export class CreatePollComponent {
   }
 
   addItem() {
-    const arrayForm = this.getAnswers();
-    arrayForm.controls.push();
-    this.getAnswers().push(this.fb.control('', [Validators.required, Validators.maxLength(80)]));
+    if (this.getAnswers().length < this.maxNumAnswers) {
+      this.getAnswers().push(this.fb.control('', [Validators.required, Validators.maxLength(80)]));
+    }
   }
 
   resetAll() {
-
+    this.createPollForm.reset();
+    this.resetAllEvent.emit(true);
   }
 }

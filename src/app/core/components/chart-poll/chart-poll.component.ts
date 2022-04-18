@@ -17,7 +17,7 @@ export class ChartPollComponent {
   gradient = false;
   showLegend = true;
   showXAxisLabel = true;
-  xAxisLabel = 'Answer';
+  xAxisLabel = 'Answers';
   showYAxisLabel = true;
   yAxisLabel = 'Votes';
 
