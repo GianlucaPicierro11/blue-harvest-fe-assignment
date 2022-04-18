@@ -1,0 +1,46 @@
+<div class="row min-h-100">
+    <div class="col">
+        <form [formGroup]="createPollForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Poll question</mat-label>
+                <input matInput formControlName="pollQuestion" maxlength="80" placeholder="Type a question">
+            </mat-form-field>
+
+            <ng-container formArrayName="answers">
+                <div *ngFor="let item of getAnswers()?.controls; index as i">
+                    <div class="row align-items-center">
+                        <div class="col text-center">
+                            <mat-form-field appearance="outline">
+                                <mat-label>{{i +1}} answer</mat-label>
+                                <input matInput maxlength="80" formControlName="{{i}}" placeholder="Type an answer">
+                            </mat-form-field>
+                        </div>
+                        <div class="col text-center">
+                            <span class="align-text-top">
+                                <mat-icon *ngIf="!areFirstTwoAnswers(i)" (click)="delete(i)" matTooltip="Delete">
+                                    delete</mat-icon>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button mat-raised-button color="primary" type="button" (click)="addItem()">
+                            Add
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{getAnswers().length}}/{{maxNumAnswers}} possible answers
+                    </div>
+                    <div class="col">
+                        <button mat-raised-button color="primary" type="button" (click)="resetAll()">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+        </form>
+    </div>
+</div>

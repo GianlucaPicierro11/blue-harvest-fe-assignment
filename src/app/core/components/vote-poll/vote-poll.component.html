@@ -1,0 +1,27 @@
+<div class="row min-h-100 padding-component">
+    <div class="col">
+        <div class="row">
+            <div class="col">
+                {{createPollForm?.get("pollQuestion")?.value}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form [formGroup]="votePollForm">
+                    <mat-radio-group class="radio-group" formControlName="answer">
+                        <mat-radio-button *ngFor="let item of getAnswers()?.controls" [value]="item.value">
+                            {{item.value}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button mat-raised-button color="primary" type="button" (click)="vote()">
+                    Vote
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
