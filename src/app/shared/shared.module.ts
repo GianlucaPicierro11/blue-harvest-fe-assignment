@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     ReactiveFormsModule,
     MatInputModule,
     MatRadioModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatButtonModule
   ],
   exports: [
     //imports
@@ -32,6 +34,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatInputModule,
     MatRadioModule,
     NgxChartsModule,
+    MatButtonModule,
     //declarations
     PageNotFoundComponent
   ]
